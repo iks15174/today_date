@@ -5,3 +5,9 @@ val bootJar: BootJar by tasks
 
 bootJar.enabled = true
 jar.enabled = false
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("ch.hsr:geohash:1.4.0")
+    runtimeOnly("com.mysql:mysql-connector-j")
+}
