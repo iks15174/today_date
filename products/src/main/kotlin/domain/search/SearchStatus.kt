@@ -1,4 +1,4 @@
-package com.pjh.domain
+package com.pjh.domain.search
 
 enum class SearchStatus {
     CREATED,

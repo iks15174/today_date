@@ -1,5 +1,7 @@
-package com.pjh.domain
+package com.pjh.domain.search
 
+import com.pjh.domain.BaseEntity
+import com.pjh.domain.Location
 import jakarta.persistence.*
 
 @Entity

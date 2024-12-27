@@ -1,7 +1,7 @@
 package com.pjh.service.dto
 
 import com.pjh.domain.Location
-import com.pjh.domain.Search
+import com.pjh.domain.search.Search
 
 data class CreateSearchCommand(
     val text: String?,

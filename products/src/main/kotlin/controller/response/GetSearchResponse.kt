@@ -1,7 +1,7 @@
 package com.pjh.controller.response
 
-import com.pjh.domain.Search
-import com.pjh.domain.SearchStatus
+import com.pjh.domain.search.Search
+import com.pjh.domain.search.SearchStatus
 
 data class GetSearchResponse(
     val searchId: Long,
