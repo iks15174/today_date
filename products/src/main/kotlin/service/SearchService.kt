@@ -5,6 +5,7 @@ import com.pjh.domain.SearchRepository
 import com.pjh.infra.kafka.SearchCreatedEventProducer
 import com.pjh.infra.kafka.schema.SearchCreatedEvent
 import com.pjh.service.dto.CreateSearchCommand
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
@@ -17,5 +18,10 @@ class SearchService(
         val savedSearch = searchRepository.save(command.toDomain())
         searchCreatedEventProducer.produce(SearchCreatedEvent.of(savedSearch))
         return savedSearch
+    }
+
+    fun get(searchId: Long): Search {
+        return searchRepository.findByIdOrNull(searchId)
+            ?: throw IllegalArgumentException("존재하지 않는 아이디 입니다 (search id: $searchId)")
     }
 }
