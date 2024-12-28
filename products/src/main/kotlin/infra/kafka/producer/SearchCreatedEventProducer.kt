@@ -1,4 +1,4 @@
-package com.pjh.infra.kafka
+package com.pjh.infra.kafka.producer
 
 import com.pjh.infra.kafka.schema.SearchCreatedEvent
 

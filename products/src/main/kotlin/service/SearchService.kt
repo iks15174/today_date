@@ -2,7 +2,7 @@ package com.pjh.service
 
 import com.pjh.domain.search.Search
 import com.pjh.domain.search.SearchRepository
-import com.pjh.infra.kafka.SearchCreatedEventProducer
+import com.pjh.infra.kafka.producer.SearchCreatedEventProducer
 import com.pjh.infra.kafka.schema.SearchCreatedEvent
 import com.pjh.service.dto.CreateSearchCommand
 import org.springframework.data.repository.findByIdOrNull

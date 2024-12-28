@@ -8,7 +8,7 @@ import jakarta.persistence.*
 class Store(
     @Column
     @Enumerated(value = EnumType.STRING)
-    val internalType: StoreType,
+    val type: StoreType,
 
     @Column
     val name: String,
