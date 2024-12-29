@@ -1,9 +1,9 @@
 package com.pjh.infra.kafka.schema
 
 data class StoreFoundEvent(
-    val contents: List<StoreEventSchema>
+    val contents: List<StoreEventData>
 ) {
-    data class StoreEventSchema(
+    data class StoreEventData(
         val type: String,
 
         val name: String,
@@ -20,16 +20,16 @@ data class StoreFoundEvent(
 
         val longitude: Double,
 
-        val photos: List<PhotoEventSchema>,
+        val photos: List<PhotoEventData>,
 
-        val reviews: List<ReviewEventSchema>,
+        val reviews: List<ReviewEventData>,
     ) {
-        data class PhotoEventSchema(
+        data class PhotoEventData(
             val url: String,
             val name: String,
         )
 
-        data class ReviewEventSchema(
+        data class ReviewEventData(
             val content: String,
         )
     }

@@ -1,7 +1,7 @@
 package com.pjh.infra.kafka.consumer
 
-interface StoreFoundEventConsumer {
-    fun consume() {
+import com.pjh.infra.kafka.schema.StoreFoundEvent
 
-    }
+interface StoreFoundEventConsumer {
+    fun consume(event: StoreFoundEvent)
 }
