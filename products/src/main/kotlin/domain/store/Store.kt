@@ -17,7 +17,7 @@ class Store(
     val address: String?,
 
     @Column
-    val linkedUri: String?,
+    val linkedUrl: String?,
 
     @Column
     val rating: Double?,
@@ -43,4 +43,14 @@ class Store(
 
     val reviews: List<Review>
         get() = _reviews.toList()
+
+    fun addReviews(reviews: List<Review>): Store {
+        this._reviews.addAll(reviews)
+        return this
+    }
+
+    fun addPhotos(photos: List<Photo>): Store {
+        this._photos.addAll(photos)
+        return this
+    }
 }

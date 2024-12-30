@@ -8,7 +8,7 @@ data class CreateSearchCommand(
     val latitude: Double,
     val longitude: Double,
 ) {
-    fun toDomain() = Search(
+    fun toEntity() = Search(
         text = text,
         location = Location.of(
             latitude = latitude,

@@ -5,7 +5,12 @@ import org.springframework.stereotype.Component
 
 @Component
 class StoreFoundEventLocalConsumer: StoreFoundEventConsumer {
+
     override fun consume(event: StoreFoundEvent) {
-        TODO("Not yet implemented")
+        /*
+        1. 검색 상태 수정
+        2. store 저장
+        3. es 에 store 저장 -> 별도의 리스너에서
+         */
     }
 }

@@ -11,7 +11,7 @@ class SearchCreatedEventLocalProducer(
     private val storeFoundEventConsumer: StoreFoundEventConsumer
 ) : SearchCreatedEventProducer {
     override fun produce(event: SearchCreatedEvent) {
-       println("produce search created event (ID: ${event.id})")
+        println("produce search created event (ID: ${event.id})")
         storeFoundEventConsumer.consume(createStoreFoundEvent(10))
     }
 

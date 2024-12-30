@@ -14,8 +14,9 @@ class SearchService(
     private val searchCreatedEventProducer: SearchCreatedEventProducer,
 ) {
 
+    // TODO: 응답도 dto 로 변경할 것
     fun create(command: CreateSearchCommand): Search {
-        val savedSearch = searchRepository.save(command.toDomain())
+        val savedSearch = searchRepository.save(command.toEntity())
         searchCreatedEventProducer.produce(SearchCreatedEvent.of(savedSearch))
         return savedSearch
     }
