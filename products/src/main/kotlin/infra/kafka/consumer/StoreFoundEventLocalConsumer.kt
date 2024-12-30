@@ -4,7 +4,7 @@ import com.pjh.infra.kafka.schema.StoreFoundEvent
 import org.springframework.stereotype.Component
 
 @Component
-class StoreFoundEventLocalConsumer: StoreFoundEventConsumer {
+class StoreFoundEventLocalConsumer : StoreFoundEventConsumer {
 
     override fun consume(event: StoreFoundEvent) {
         /*
