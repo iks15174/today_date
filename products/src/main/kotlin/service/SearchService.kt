@@ -5,6 +5,7 @@ import com.pjh.domain.search.SearchRepository
 import com.pjh.infra.kafka.producer.SearchCreatedEventProducer
 import com.pjh.infra.kafka.schema.SearchCreatedEvent
 import com.pjh.service.dto.CreateSearchCommand
+import com.pjh.service.dto.UpdateSearchStatusCommand
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
@@ -24,5 +25,12 @@ class SearchService(
     fun get(searchId: Long): Search {
         return searchRepository.findByIdOrNull(searchId)
             ?: throw IllegalArgumentException("존재하지 않는 아이디 입니다 (search id: $searchId)")
+    }
+
+    fun updateStatus(command: UpdateSearchStatusCommand): Search {
+        val search = searchRepository.findByIdOrNull(command.searchId)
+            ?: throw IllegalArgumentException("존재하지 않는 아이디 입니다 (search id: ${command.searchId})")
+
+        return search.changeStatus(command.status)
     }
 }

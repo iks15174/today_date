@@ -24,4 +24,9 @@ class Search(
     @JoinColumn(name = "parent_search_id")
     var parentSearch: Search? = null
         private set
+
+    fun changeStatus(status: SearchStatus): Search {
+        this.status = status // TODO: 사전 로직 검증하기
+        return this
+    }
 }
