@@ -32,13 +32,13 @@ class Store(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0
 
-    @OneToMany(mappedBy = "place", cascade = [CascadeType.ALL])
+    @OneToMany(mappedBy = "store", cascade = [CascadeType.ALL])
     private val _photos: MutableList<Photo> = mutableListOf()
 
     val photos: List<Photo>
         get() = _photos.toList()
 
-    @OneToMany(mappedBy = "place", cascade = [CascadeType.ALL])
+    @OneToMany(mappedBy = "store", cascade = [CascadeType.ALL])
     private val _reviews: MutableList<Review> = mutableListOf()
 
     val reviews: List<Review>

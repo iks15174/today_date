@@ -1,6 +1,11 @@
 package com.pjh.infra.kafka.schema
 
+import com.pjh.domain.search.SearchStatus
+import com.pjh.service.dto.CreateStoreCommand
+import com.pjh.service.dto.HandleSearchResultCommand
+
 data class StoreFoundEvent(
+    val searchId: Long,
     val contents: List<StoreEventData>
 ) {
     data class StoreEventData(
@@ -33,4 +38,32 @@ data class StoreFoundEvent(
             val content: String,
         )
     }
+
+    fun toHandleSearchResultCommand() = HandleSearchResultCommand(
+        searchId = searchId,
+        status = SearchStatus.SCRAPE_COMPLETED,
+        stores = contents.map {
+            CreateStoreCommand(
+                type = it.type,
+                name = it.name,
+                address = it.address,
+                linkedUrl = it.linkedUrl,
+                rating = it.rating,
+                totalReviewCnt = it.totalReviewCnt,
+                latitude = it.latitude,
+                longitude = it.longitude,
+                photos = it.photos.map { photo ->
+                    CreateStoreCommand.PhotoDto(
+                        url = photo.url,
+                        name = photo.name
+                    )
+                },
+                reviews = it.reviews.map { review ->
+                    CreateStoreCommand.ReviewDto(
+                        content = review.content
+                    )
+                }
+            )
+        }
+    )
 }

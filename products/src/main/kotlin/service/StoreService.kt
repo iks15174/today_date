@@ -9,7 +9,15 @@ import org.springframework.stereotype.Service
 class StoreService(
     private val storeRepository: StoreRepository,
 ) {
-    fun create(command: CreateStoreCommand): Store {
-        return storeRepository.save(command.toEntity())
+    fun createIfNotExists(command: CreateStoreCommand): Store {
+        val entity = storeRepository.findByNameAndLocationGeoHash(
+            name = command.name,
+            geoHash = command.geoHash
+        )
+        return if (entity == null) {
+            storeRepository.save(command.toEntity())
+        } else {
+            entity
+        }
     }
 }

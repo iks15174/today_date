@@ -5,7 +5,7 @@ import com.pjh.domain.search.Search
 import java.time.LocalDateTime
 
 data class SearchCreatedEvent(
-    val id: Long,
+    val searchId: Long,
     val text: String?,
     val location: Location,
 ) {
@@ -13,7 +13,7 @@ data class SearchCreatedEvent(
 
     companion object {
         fun of(search: Search) = SearchCreatedEvent(
-            id = search.id,
+            searchId = search.id,
             text = search.text,
             location = search.location,
         )

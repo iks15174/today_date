@@ -4,18 +4,19 @@ import com.pjh.infra.kafka.consumer.StoreFoundEventConsumer
 import com.pjh.infra.kafka.schema.SearchCreatedEvent
 import com.pjh.infra.kafka.schema.StoreFoundEvent
 import com.pjh.infra.kafka.schema.StoreFoundEvent.StoreEventData
+import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component
 
 @Component
 class SearchCreatedEventLocalProducer(
-    private val storeFoundEventConsumer: StoreFoundEventConsumer
+    @Lazy private val storeFoundEventConsumer: StoreFoundEventConsumer
 ) : SearchCreatedEventProducer {
     override fun produce(event: SearchCreatedEvent) {
-        println("produce search created event (ID: ${event.id})")
-        storeFoundEventConsumer.consume(createStoreFoundEvent(10))
+        println("produce search created event (ID: ${event.searchId})")
+        storeFoundEventConsumer.consume(createStoreFoundEvent(searchId = event.searchId, cnt = 10))
     }
 
-    private fun createStoreFoundEvent(cnt: Int): StoreFoundEvent {
+    private fun createStoreFoundEvent(searchId: Long, cnt: Int): StoreFoundEvent {
         val contents = (0 until cnt).map {
             StoreEventData(
                 type = "RESTAURANTS",
@@ -30,6 +31,6 @@ class SearchCreatedEventLocalProducer(
                 reviews = emptyList()
             )
         }
-        return StoreFoundEvent(contents = contents)
+        return StoreFoundEvent(searchId = searchId, contents = contents)
     }
 }

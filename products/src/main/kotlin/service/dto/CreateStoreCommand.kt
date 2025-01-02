@@ -5,6 +5,7 @@ import com.pjh.domain.store.Photo
 import com.pjh.domain.store.Review
 import com.pjh.domain.store.Store
 import com.pjh.domain.store.StoreType
+import com.pjh.service.GeoHashService
 
 data class CreateStoreCommand(
     val type: String,
@@ -35,6 +36,8 @@ data class CreateStoreCommand(
     data class ReviewDto(
         val content: String,
     )
+
+    val geoHash: String = GeoHashService.toGeoHash(latitude = latitude, longitude = longitude)
 
     fun toEntity(): Store {
         val store = Store(
