@@ -4,6 +4,7 @@ import ch.hsr.geohash.GeoHash
 
 object GeoHashService {
 
+    // level 8 은 약 19.11m X 19.11m 범위이다
     fun toGeoHash(latitude: Double, longitude: Double, precision: Int = 8): String =
         GeoHash.geoHashStringWithCharacterPrecision(latitude, longitude, precision)
 
