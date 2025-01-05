@@ -1,4 +1,12 @@
 spring:
+  data:
+    elasticsearch:
+      index-management:
+        auto-create: true # 운영에서 수정 필요
+      client:
+        uris: http://localhost:9200
+      username: ${ES_USER}
+      password: ${ES_PASSWORD}
   datasource:
     url: jdbc:mysql://localhost:3306/todaydate
     username: ${DB_USER}
